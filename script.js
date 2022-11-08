@@ -1,35 +1,55 @@
-alert("Bienvenido a tierra musical");
-
-
-let menu = prompt("Ingresa tu opcion: 1.Ver productos en descuentos  2.Quieres comprar? ")
-const carrito = [
-    { nombre: 'Micrófono dinámico Shure MV7', precio: 500},
-    { nombre: 'Batería Electrónica TD-17KV', precio: 200},
-    { nombre: 'Cable Crossover Roland Systems', precio: 700, descuento: true},
-    { nombre: 'Micrófono dinámico Shure MV7', precio: 600},
-    { nombre: 'Bajo Fender PRX', precio: 50, descuento: true},
-    { nombre: 'Guitarra eléctrica Fender PRS SE', precio: 500},
-]
-switch(menu){
-    case "1": 
-        for(let i = 0; i <= 10; i++) {
-            if(carrito[i].descuento) {
-                console.log(`El articulo ${carrito[i].nombre} Tiene descuento...`);
-                continue;
-            }
-            console.log(carrito[i].nombre);
-        }
-    break;
-
-    case "2": 
-        let edad = prompt("Introduce tu edad: ");
-
-        if (edad > 0 && edad < 18) {
-            alert("Eres menor de edad. No puedes comprar");
-        }
-        
-        else{
-            alert("Eres mayor de edad. Puedes comprar");
-        };
-        break;
+class Producto {
+    constructor(nombre, precio, disponible) {
+        this.nombre =nombre;
+        this.precio =precio;
+        this.disponible =disponible;
+    }
 }
+const producto01 = {
+    nombre:"fender standard stratocaster", 
+    precio: 5000,
+    disponible:true
+}
+const producto02 = new Producto("Batería Electrónica TD-17KV",9000,true);
+const producto03 = new Producto("Micrófono dinámico Shure MV7",1000,true);
+const producto04 = new Producto("Guitarra eléctrica Fender PRS SE",8760,true);
+const producto05 = new Producto("BASS BN5 TRANSPARENT RED 2023",3200,true);
+const producto06 = new Producto("Funda Guitarra Electrica Gator 4G 20mm Negro",56000,true);
+const producto07 = new Producto("Pedal Efecto Guitarra Fender Compugilist",6700,true);
+
+const inventario = [];
+
+inventario.push(producto01);
+inventario.push(producto02);
+inventario.push(producto03);
+inventario.push(producto04);
+inventario.push(producto05);
+inventario.push(producto06);
+inventario.push(producto07);
+
+
+
+
+
+    function questionMenu(){
+        let menuRes = prompt(" 1.- Solo quiero mirar \n 2.- Quieres ver todo nuestro catologo ?")
+        if (menuRes == 1){
+            alert("Disfruta lo que verás, te encantara!")     
+            }
+        else {
+            console.table(inventario);
+            const BuyRes01 = prompt("Ingresa el indice del elemento que quieres comprar");
+                if( BuyRes01 <= 6 ){
+                    alert(`Felicitaciones acabas de comprar el articulo con indice ${BuyRes01 }`)
+                }
+                else{alert("El articulo que seleccionaste no se encuentra disponible")}
+                
+        }
+    
+    }
+
+alert("Bienvenido a tierra musical a continuacion te mostraremos nuestro catalogo en la consola.");
+questionMenu();
+
+
+
